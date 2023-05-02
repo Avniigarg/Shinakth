@@ -59,12 +59,12 @@
       <div class="container py-3">
         <div class="d-flex align-items-center">
           <a href="index.html">
-            <h2 class="text-white fw-bold m-0">shinakth</h2>
+            <h2 class="text-white fw-bold m-0">SHINAKTH</h2>
           </a>
           <div class="ms-auto d-flex align-items-center">
             <small class="ms-4"
-              ><i class="fa fa-map-marker-alt me-3"></i>123 Street, Bengaluru,
-              INDIA</small
+              ><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York,
+              USA</small
             >
             <small class="ms-4"
               ><i class="fa fa-envelope me-3"></i>info@example.com</small
@@ -114,21 +114,22 @@
             <div class="navbar-nav">
               <a href="index.html" class="nav-item nav-link">Home</a>
               <!-- <a href="about.html" class="nav-item nav-link">About</a>
-              <a href="service.html" class="nav-item nav-link">Services</a>
+              <a href="service.html" class="nav-item nav-link active"
+                >Services</a
+              >
               <a href="project.html" class="nav-item nav-link">Projects</a> -->
               <div class="nav-item dropdown">
                 <a
                   href="#"
-                  class="nav-link dropdown-toggle active"
+                  class="nav-link dropdown-toggle"
                   data-bs-toggle="dropdown"
                   >Pages</a
                 >
                 <div
                   class="dropdown-menu bg-light rounded-0 rounded-bottom m-0"
-                  <!--
                 >
-                  <a href="feature.html" class="dropdown-item">Features</a> -->
-                  <a href="team.html" class="dropdown-item active">Our Team</a>
+                  <!-- <a href="feature.html" class="dropdown-item">Features</a> -->
+                  <a href="team.html" class="dropdown-item">Our Team</a>
                   <a href="testimonial.html" class="dropdown-item">Perfessor</a>
                   <!-- <a href="quote.html" class="dropdown-item">Quotation</a> -->
                   <a href="404.html" class="dropdown-item">404 Page</a>
@@ -153,13 +154,15 @@
       data-wow-delay="0.1s"
     >
       <div class="container text-center py-5">
-        <h1 class="display-2 text-white mb-4 animated slideInDown">Our Team</h1>
+        <h1 class="display-2 text-white mb-4 animated slideInDown">
+          Information
+        </h1>
         <nav aria-label="breadcrumb animated slideInDown">
           <ol class="breadcrumb justify-content-center mb-0">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Pages</a></li>
             <li class="breadcrumb-item text-primary" aria-current="page">
-              Our Team
+              Information
             </li>
           </ol>
         </nav>
@@ -167,160 +170,103 @@
     </div>
     <!-- Page Header End -->
 
-    <!-- Team Start -->
+    <!-- form  -->
     <div class="container-xxl py-5">
       <div class="container">
-        <div
-          class="text-center mx-auto wow fadeInUp"
-          data-wow-delay="0.1s"
-          style="max-width: 500px"
-        >
-          <p class="fs-5 fw-medium text-primary">Our Team</p>
-          <h1 class="display-5 mb-5">Our Expert People Ready to Help You</h1>
-        </div>
-        <div class="row g-4">
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="team-item rounded overflow-hidden pb-4">
-              <img
-                class="img-fluid mb-4"
-                src="C:\Users\avnig\OneDrive\Desktop\shinakth\img\anzar.jpeg"
-                alt=""
-              />
-              <h5>Peerzada Anzar Azmat</h5>
-              <span class="text-primary">FullStack Developer</span>
-              <ul class="team-social">
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    class="btn btn-square"
-                    href="https://twitter.com/PeerzadaAnzar"
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                </li>
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    class="btn btn-square"
-                    href="https://www.linkedin.com/in/peerzadaanzar/"
-                    ><i class="fab fa-linkedin-in"></i
-                  ></a>
-                </li>
-              </ul>
+        <div class="row g-5">
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <p class="fs-5 fw-medium text-primary">Get A Medical Checkup!</p>
+            <h1 class="display-5 mb-4">Need Our Expert Help? We're Here!</h1>
+            <p class="mb-4"></p>
+            <a
+              class="d-inline-flex align-items-center rounded overflow-hidden border border-primary"
+              href=""
+            >
+              <span
+                class="btn-lg-square bg-primary"
+                style="width: 55px; height: 55px"
+              >
+                <i class="fa fa-phone-alt text-white"></i>
+              </span>
+              <span class="fs-5 fw-medium mx-4">+012 345 6789</span>
+            </a>
+          </div>
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+            <h2 class="mb-4">Get A Free Scan</h2>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Your Name"
+                  />
+                  <label for="name"> Full Name *:</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="age"
+                    placeholder="Your age"
+                  />
+                  <label for="name">Age</label>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="mail"
+                    placeholder="Your Email"
+                  />
+                  <label for="mail">Email *:</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="contact"
+                    placeholder="Contact Number"
+                  />
+                  <label for="name">Contact Number *:</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <textarea
+                    class="form-control"
+                    placeholder="fill the Details of your MEdical History"
+                    id="message"
+                    style="height: 130px"
+                  ></textarea>
+                  <label for="message">Medical History *:</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input type="file" class="form-control" id="img" />
+                  <label for="img">Retinal Image *:</label>
+                </div>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-primary w-100 py-3" type="submit">
+                  Submit Now
+                </button>
+              </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="team-item rounded overflow-hidden pb-4">
-              <img
-                class="img-fluid mb-4"
-                src="C:\Users\avnig\OneDrive\Desktop\shinakth\img\malik.jpeg"
-                alt=""
-              />
-              <h5>Malik Najeeb Ul Habib</h5>
-              <span class="text-primary">BackEnd Developer</span>
-              <ul class="team-social">
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    class="btn btn-square"
-                    href="https://twitter.com/maliknajeeb133"
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                </li>
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    class="btn btn-square"
-                    href="https://www.linkedin.com/in/maliknajeeb133/"
-                    ><i class="fab fa-linkedin-in"></i
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-            <div class="team-item rounded overflow-hidden pb-4">
-              <img
-                class="img-fluid mb-4"
-                src="C:\Users\avnig\OneDrive\Desktop\shinakth\img\avni.png"
-                alt=""
-              />
-              <h5>Avni Garg</h5>
-              <span class="text-primary">FontEnd Developer</span>
-              <ul class="team-social">
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                </li>
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                </li>
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    class="btn btn-square"
-                    href="https://www.linkedin.com/in/avni-garg-/"
-                    ><i class="fab fa-linkedin-in"></i
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-            <div class="team-item rounded overflow-hidden pb-4">
-              <img class="img-fluid mb-4" src="img/team-4.jpg" alt="" />
-              <h5>Robert Jordan</h5>
-              <span class="text-primary">Digital Marketer</span>
-              <ul class="team-social">
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                </li>
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                </li>
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                </li>
-                <li>
-                  <a class="btn btn-square" href=""
-                    ><i class="fab fa-linkedin-in"></i
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
-    <!-- Team End -->
+    <!-- Service End -->
 
     <!-- Footer Start -->
     <div
@@ -335,9 +281,6 @@
               <i class="fa fa-map-marker-alt me-3"></i>123 Street, Bengaluru,
               INDIA
             </p>
-            <!-- <p class="mb-2">
-              <i class="fa fa-phone-alt me-3"></i>+012 345 67890
-            </p> -->
             <p class="mb-2">
               <i class="fa fa-envelope me-3"></i>info@example.com
             </p>
@@ -372,8 +315,8 @@
             <h6 class="text-light">09:00 am - 12:00 pm</h6>
             <p class="mb-1">Sunday</p>
             <h6 class="text-light">Closed</h6>
-          </div> -->
-          <!-- <div class="col-lg-3 col-md-6">
+          </div>
+          <div class="col-lg-3 col-md-6">
             <h4 class="text-white mb-4">Newsletter</h4>
             <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
             <div class="position-relative w-100">
