@@ -1,4 +1,17 @@
 Flask
+flask-sqlalchemy
+flask-migrate
+flask-uploads
+tensorflow
+opencv-python-headless
+numpy
+scikit-image
 scikit-fuzzy
 patchify
 imagecodecs
+matplotlib
+pandas
+flask_restful
+flask_cors
+werkzeug
+keras

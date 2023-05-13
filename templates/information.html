@@ -74,20 +74,54 @@
 
           <div class="col-sm-6">
             <div class="form-floating">
-              <input type="file" class="form-control" id="images" />
+              <input type="file" name="file" class="form-control" id="file" />
               <label for="img">Retinal Image</label>
             </div>
           </div>
           <div class="col-12 text-center">
-            <button class="btn btn-primary w-100 py-3" type="submit">
+            <button class="btn btn-primary w-100 py-3" type="button" onclick="uploadImage()">
               Submit Now
             </button>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 <!-- Service End -->
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+  function uploadImage() {
+    // Get the selected image file
+    const fileInput = document.getElementById('file');
+    const imageFile = fileInput.files[0];
+
+    // Create a FormData object and append the image file to it
+    const formData = new FormData();
+    formData.append('file', imageFile);
+
+    // Send the image file to the server using an AJAX request
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/predict', true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Redirect to the /result route
+        window.location.href = '/result';
+      } else {
+        // Handle the error case
+        console.error('Error:', xhr.statusText);
+      }
+    };
+
+    xhr.send(formData);
+  }
+</script>
+
+
+
 
 {% endblock %}
