@@ -1,0 +1,4 @@
+Flask
+scikit-fuzzy
+patchify
+imagecodecs

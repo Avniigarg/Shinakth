@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container text-center py-5">
+    <h1 class="display-2 text-white mb-4 animated slideInDown">
+      Information
+    </h1>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<!-- form  -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+        <p class="fs-5 fw-medium text-primary">Get Your Free Checkup!</p>
+        <h1 class="display-5 mb-4">Need Our Expert Help? We're Here!</h1>
+        <p class="mb-4"></p>
+        <a class="d-inline-flex align-items-center rounded overflow-hidden border border-primary" href="">
+          <span class="btn-lg-square bg-primary" style="width: 55px; height: 55px">
+            <i class="fa fa-phone-alt text-white"></i>
+          </span>
+          <span class="fs-5 fw-medium mx-4">+91-XXXXXXXXXX</span>
+        </a>
+      </div>
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+        <h2 class="mb-4">Get A Free Scan</h2>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="name" placeholder="Your Name" />
+              <label for="name"> Full Name</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="age" placeholder="Your age" />
+              <label for="age">Age</label>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <input type="email" class="form-control" id="mail" placeholder="Your Email" />
+              <label for="mail">Email</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <input type="tel" class="form-control" id="contact" placeholder="Contact Number" />
+              <label for="contact">Contact Number</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="fill the Details of your Medical History" id="message"
+                style="height: 130px"></textarea>
+              <label for="message">Medical History</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <select class="form-select" id="gender" placeholder="Gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+              </select>
+              <label for="gender">Gender</label>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-floating">
+              <input type="file" class="form-control" id="images" />
+              <label for="img">Retinal Image</label>
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <button class="btn btn-primary w-100 py-3" type="submit">
+              Submit Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Service End -->
+
+{% endblock %}

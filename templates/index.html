@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<!-- Carousel Start -->
+<div class="container-fluid px-0 mb-5">
+  <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="w-100" src="{{ url_for('static', filename='img/eye1.avif')}}" alt="Image" />
+        <div class="carousel-caption">
+          <div class="container">
+            <div class="row justify-content-start">
+              <div class="col-lg-7 text-start">
+                <p class="fs-4 text-white animated slideInRight">
+                  Welcome to
+                  <strong>SHINAKTH</strong>
+                </p>
+                <h2 class="display-1 text-white mb-4 animated slideInRight">
+                  “Envisioning Reliable Diagnosis of Diabetic Retinopathy
+                  using U-Net Architecture”
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Carousel End -->
+
+<!-- About Start -->
+<div class="container-xxl about my-5">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-lg-6">
+        <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 300px">
+          <button type="button" class="btn-play" data-bs-toggle="modal"
+            data-src="https://www.youtube.com/embed/wnuWqG18FVU" data-bs-target="#videoModal">
+            <span></span>
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-6 pt-lg-5 wow fadeIn" data-wow-delay="0.5s">
+        <div class="bg-white rounded-top p-5 mt-lg-5">
+          <p class="fs-5 fw-medium text-primary">About Project</p>
+          <h1 class="display-6 mb-4">
+            The Best Architecture Model to Improve Your Health.
+          </h1>
+          <p class="mb-4"></p>
+          <div class="row g-5 pt-2 mb-5">
+            <div class="col-sm-6">
+              <img class="img-fluid mb-4" src="{{ url_for('static', filename='img/icon/icon-5.png')}}" alt="" />
+              <h5 class="mb-3">Managed Perfect Scans</h5>
+              <!-- <span>Clita erat ipsum et lorem et sit sed stet lorem</span> -->
+            </div>
+            <div class="col-sm-6">
+              <img class="img-fluid mb-4" src="{{ url_for('static', filename='img/icon/icon-2.png')}}" alt="" />
+              <h5 class="mb-3">Dedicated Experts</h5>
+            </div>
+          </div>
+          <a class="btn btn-primary rounded-pill py-3 px-5"
+            href="https://drive.google.com/file/d/1lDsDv2yLUZ5frdUjXtCjIKUwNGga7C3W/view" target="_blank">
+            Research Paper</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- About End -->
+
+<!-- Video Modal Start -->
+<div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-0">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- 16:9 aspect ratio -->
+        <div class="ratio ratio-16x9">
+          <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+            allow="autoplay"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Video Modal End -->
+
+<!-- Service Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px">
+      <p class="fs-5 fw-medium text-primary">Models Used</p>
+      <h1 class="display-5 mb-5">
+        Digital Scanning of Retinal Image Models In Details.
+      </h1>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="service-item position-relative h-100">
+          <div class="service-text rounded p-5">
+            <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 64px; height: 64px">
+              <img class="img-fluid" src="{{ url_for('static', filename='img/icon/icon-5.png')}}" alt="Icon" />
+            </div>
+            <h5 class="mb-3">U-Net</h5>
+          </div>
+          <div class="service-btn rounded-0 rounded-bottom">
+            <a class="text-primary fw-medium" href="https://en.wikipedia.org/wiki/U-Net" target="_blank">Read More<i
+                class="bi bi-chevron-double-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="service-item position-relative h-100">
+          <div class="service-text rounded p-5">
+            <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 64px; height: 64px">
+              <img class="img-fluid" src="{{ url_for('static', filename='img/icon/icon-6.png')}}" alt="Icon" />
+            </div>
+            <h5 class="mb-3">RES-UNet</h5>
+          </div>
+          <div class="service-btn rounded-0 rounded-bottom">
+            <a class="text-primary fw-medium" href="https://en.wikipedia.org/wiki/Residual_neural_network"
+              target="_blank">Read More<i class="bi bi-chevron-double-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="service-item position-relative h-100">
+          <div class="service-text rounded p-5">
+            <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 64px; height: 64px">
+              <img class="img-fluid" src="{{ url_for('static', filename='img/icon/icon-7.png')}}" alt="Icon" />
+            </div>
+            <h5 class="mb-3">Attention UNet</h5>
+          </div>
+          <div class="service-btn rounded-0 rounded-bottom">
+            <a class="text-primary fw-medium"
+              href="https://medium.com/aiguys/attention-u-net-resunet-many-more-65709b90ac8b" target="_blank">Read
+              More<i class="bi bi-chevron-double-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="service-item position-relative h-100">
+          <div class="service-text rounded p-5">
+            <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 64px; height: 64px">
+              <img class="img-fluid" src="{{ url_for('static', filename='img/icon/icon-8.png')}}" alt="Icon" />
+            </div>
+            <h5 class="mb-3">RA-UNet</h5>
+          </div>
+          <div class="service-btn rounded-0 rounded-bottom">
+            <a class="text-primary fw-medium" href="https://en.wikipedia.org/wiki/Resident_assistant"
+              target="_blank">Read More<i class="bi bi-chevron-double-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="service-item position-relative h-100">
+          <div class="service-text rounded p-5">
+            <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 64px; height: 64px">
+              <img class="img-fluid" src="{{ url_for('static', filename='img/icon/icon-9.png')}}" alt="Icon" />
+            </div>
+            <h5 class="mb-3">BT-UNet</h5>
+          </div>
+          <div class="service-btn rounded-0 rounded-bottom">
+            <a class="text-primary fw-medium" href="https://en.wikipedia.org/wiki/U-Net" target="_blank">Read More<i
+                class="bi bi-chevron-double-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="service-item position-relative h-100">
+          <div class="service-text rounded p-5">
+            <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 64px; height: 64px">
+              <img class="img-fluid" src="{{ url_for('static', filename='img/icon/icon-10.png')}}" alt="Icon" />
+            </div>
+            <h5 class="mb-3">R2-UNet</h5>
+          </div>
+          <div class="service-btn rounded-0 rounded-bottom">
+            <a class="text-primary fw-medium" href="https://en.wikipedia.org/wiki/U-Net" target="_blank">Read More<i
+                class="bi bi-chevron-double-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Service End -->
+
+<!-- Team Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px">
+      <p class="fs-5 fw-medium text-primary">Our Team</p>
+      <h1 class="display-5 mb-5">Our Expert People Ready to Help You</h1>
+    </div>
+    <div class="row-team">
+      <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="team-item rounded overflow-hidden pb-4">
+          <img class="img-fluid mb-4" src="{{ url_for('static', filename='img/anzar.jpeg')}}" alt="" />
+          <h5>Peerzada Anzar Azmat</h5>
+          <span class="text-primary">Fullstack Developer</span>
+          <ul class="team-social">
+            <li>
+              <a class="btn btn-square" href="https://twitter.com/PeerzadaAnzar" target="_blank"><i
+                  class="fab fa-twitter"></i></a>
+            </li>
+            <!-- <li>
+                  <a class="btn btn-square" href=""
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </li> -->
+            <li>
+              <a class="btn btn-square" href="https://www.linkedin.com/in/peerzadaanzar/" target="_blank"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="team-item rounded overflow-hidden pb-4">
+          <img class="img-fluid mb-4" src="{{ url_for('static', filename='img/malik.jpeg')}}" alt="" />
+          <h5>Malik Najeeb Ul Habib</h5>
+          <span class="text-primary">BackEnd Developer</span>
+          <ul class="team-social">
+            <li>
+              <a class="btn btn-square" href="https://twitter.com/maliknajeeb133" target="_blank"><i
+                  class="fab fa-twitter"></i></a>
+            </li>
+            <!-- <li>
+                  <a class="btn btn-square" href=""
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </li> -->
+            <li>
+              <a class="btn btn-square" href="https://www.linkedin.com/in/maliknajeeb133/" target="_blank"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+        <div class="team-item rounded overflow-hidden pb-4">
+          <img class="img-fluid mb-4" src="{{ url_for('static', filename='img/avni.png')}}" alt="" />
+          <h5>Avni Garg</h5>
+          <span class="text-primary">FontEnd Developer</span>
+          <ul class="team-social">
+            <li>
+              <a class="btn btn-square" href="" target="_blank"><i class="fab fa-twitter"></i></a>
+            </li>
+            <!-- <li>
+                  <a class="btn btn-square" href=""
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </li> -->
+            <li>
+              <a class="btn btn-square" href="https://www.linkedin.com/in/avni-garg-/" target="_blank"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Team End -->
+
+<!-- Porfessor Start -->
+<div class="container-xxl pt-5">
+  <div class="container">
+    <div class="text-center text-md-start pb-5 pb-md-0 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px">
+      <p class="fs-5 fw-medium text-primary">Professor</p>
+      <h1 class="display-5 mb-5">Under Guidance of Professor!</h1>
+    </div>
+    <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+      <div class="testimonial-item rounded p-4 p-lg-5 mb-5">
+        <img class="mb-4" src="{{ url_for('static', filename='img/meenk.png')}}" alt="" />
+        <p class="mb-4">
+          Senior Assistant Professor, Department of Computer Science and
+          Engineering, NHCE.
+        </p>
+        <h5>Dr. Meenakshi Sundaram</h5>
+        <span class="text-primary"></span>
+      </div>
+      <div class="testimonial-item rounded p-4 p-lg-5 mb-5">
+        <img class="mb-4" src="{{ url_for('static', filename='img/santosh.jpg')}}" alt="" />
+        <p class="mb-4">
+          Senior Assistant Professor, Department of Computer Science and
+          Engineering, NHCE.
+        </p>
+        <h5>Santosh Krishna BV</h5>
+        <span class="text-primary"></span>
+      </div>
+      <div class="testimonial-item rounded p-4 p-lg-5 mb-5">
+        <img class="mb-4" src="{{ url_for('static', filename='img/renuka mam.png')}}" alt="" />
+        <p class="mb-4">
+          Senior Assistant Professor, Department of Computer Science and
+          Engineering, NHCE.
+        </p>
+        <h5>Dr. Renuka Sandeep Gound</h5>
+        <span class="text-primary"></span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Porfessor End -->
+
+{% endblock %}
