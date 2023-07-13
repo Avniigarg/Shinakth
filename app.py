@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from werkzeug.utils import secure_filename
 import numpy as np
 import cv2
@@ -95,13 +95,9 @@ def generate_unique_filename(filename):
     unique_filename = str(uuid.uuid4()) + '_' + filename
     return unique_filename
 
-def convert_tiff_to_png(image_path):
-    # Open the TIFF image
-    tiff_image = Image.open(image_path)
-
-    # Convert the image to PNG format
-    png_image_path = image_path.replace(".tif", ".png")
-    tiff_image.save(png_image_path, "PNG")
+def convert_to_png(tiff_path, png_path):
+    image = Image.open(tiff_path)
+    image.save(png_path, 'PNG')
     
     return png_image_path
 
@@ -118,43 +114,42 @@ def upload():
     original_image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(original_image_path)
 
-    predcted_image = predict(cv2.imread(original_image_path))
+    predicted_image = predict(cv2.imread(original_image_path))
 
     predicted_image_path = os.path.join(app.config['UPLOAD_FOLDER'], predicted_filename)
-    cv2.imwrite(predicted_image_path, predcted_image)
+    cv2.imwrite(predicted_image_path, predicted_image)
+
+    predicted_image_png=predicted_image_path+".png"
+    original_image_png=original_image_path+".png"
     
     #converting paths and images to png
-    conv_original_image_path=convert_tiff_to_png(original_image_path)
-    conv_predicted_image_path=convert_tiff_to_png(predicted_image_path)
-    
-    
-    # Redirect to the /result route with image paths as URL parameters
-    params = urlencode({
-        'conv_original_image_path': conv_original_image_path,
-        'conv_predicted_image_path': conv_predicted_image_path
-       
-    })
+    convert_to_png(predicted_image_path, predicted_image_png)
+    convert_to_png(original_image_path, original_image_png)
 
-    image_paths=[conv_original_image_path,conv_predicted_image_path]
-    return redirect(url_for('show_result',image_paths=image_paths))
+    session['image1']= original_image_path
+    session['image2']= predicted_image_png
+    # return redirect(url_for('show_result',image_paths=image_paths))
+    return redirect(url_for('show_result'))
+
 
 @app.route('/result')
 def show_result():
     # Retrieve the image paths from the URL parameters
-    image_paths=request.args.getlist('image_paths')
+    image1=session.get('image1', None)
+    image2=session.get('image2',None)
     # conv_original_image_path = request.args.get('conv_original_image_path')
     # conv_predicted_image_path = request.args.get('conv_predicted_image_path')
-    
-    orig=image_paths[0]
-    pred=image_paths[1]
+    session.pop('image1',None)
+    session.pop('image2',None)
+    # orig=image_paths[0]
+    # pred=image_paths[1]
 
     # Render the result.html template and pass the image paths
     # return render_template('result.html', actual_image_path=orig, pred_image_path=pred)
 
-    if image_paths:
-        return render_template('result.html', image_paths=image_paths)
-    else:
-        return 'Image paths not found in query parameters'
+    
+    return render_template('result.html', image1=image1,image2=image2)
+  
 
 
 
