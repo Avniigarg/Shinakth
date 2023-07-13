@@ -9,6 +9,8 @@ from metrics import IoU, IoU_coef, IoU_loss, dice_coef, dice_coef_loss, accuracy
 from urllib.parse import urlencode
 import os
 import uuid
+from PIL import Image
+
 
 app = Flask(__name__)
 
@@ -110,11 +112,16 @@ def upload():
 
     predicted_image_path = os.path.join(app.config['UPLOAD_FOLDER'], predicted_filename)
     cv2.imwrite(predicted_image_path, predcted_image)
+    og=Image.open(original_image_path)
+    conv_og_path =original_image_path+".jpg"
+    og.save(conv_og_path)
+
 
     # Redirect to the /result route with image paths as URL parameters
     params = urlencode({
         'original_image_path': original_image_path,
-        'predicted_image_path': predicted_image_path
+        'predicted_image_path': predicted_image_path,
+        'conv_og_path':conv_og_path
     })
     return redirect('/result?' + params)
 
@@ -123,9 +130,11 @@ def show_result():
     # Retrieve the image paths from the URL parameters
     original_image_path = request.args.get('original_image_path')
     predicted_image_path = request.args.get('predicted_image_path')
+    conv_og_path=request.args.get('conv_og_path')
+    
 
     # Render the result.html template and pass the image paths
-    return render_template('result.html', actual_image_path=original_image_path, predicted_image_path=predicted_image_path)
+    return render_template('result.html', actual_image_path=conv_og_path, predicted_image_path=predicted_image_path)
 
 
 
