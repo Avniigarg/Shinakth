@@ -124,12 +124,14 @@ def upload():
     cv2.imwrite(predicted_image_path, predcted_image)
     
     #converting paths and images to png
-    original_image_path=convert_tiff_to_png(original_image_path)
+    conv_original_image_path=convert_tiff_to_png(original_image_path)
+    conv_predicted_image_path=conv_original_image_path(predicted_image_path)
+    
     
     # Redirect to the /result route with image paths as URL parameters
     params = urlencode({
-        'original_image_path': original_image_path,
-        'predicted_image_path': predicted_image_path
+        'conv_original_image_path': conv_original_image_path,
+        'conv_predicted_image_path': conv_predicted_image_path
        
     })
     return redirect('/result?' + params)
@@ -137,12 +139,12 @@ def upload():
 @app.route('/result')
 def show_result():
     # Retrieve the image paths from the URL parameters
-    original_image_path = request.args.get('original_image_path')
-    predicted_image_path = request.args.get('predicted_image_path')
+    conv_original_image_path = request.args.get('conv_original_image_path')
+    conv_predicted_image_path = request.args.get('conv_predicted_image_path')
     
 
     # Render the result.html template and pass the image paths
-    return render_template('result.html', original_image_path, predicted_image_path=predicted_image_path)
+    return render_template('result.html', actual_image_path=conv_original_image_path, pred_image_path=conv_predicted_image_path)
 
 
 
