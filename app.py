@@ -95,6 +95,16 @@ def generate_unique_filename(filename):
     unique_filename = str(uuid.uuid4()) + '_' + filename
     return unique_filename
 
+def convert_tiff_to_png(image_path):
+    # Open the TIFF image
+    tiff_image = Image.open(image_path)
+
+    # Convert the image to PNG format
+    png_image_path = image_path.replace(".tif", ".png")
+    tiff_image.save(png_image_path, "PNG")
+    
+    return png_image_path
+
 @app.route('/predict', methods=['POST'])
 def upload():
     file = request.files['file']
@@ -112,16 +122,15 @@ def upload():
 
     predicted_image_path = os.path.join(app.config['UPLOAD_FOLDER'], predicted_filename)
     cv2.imwrite(predicted_image_path, predcted_image)
-    og=Image.open(original_image_path)
-    conv_og_path =original_image_path+".jpg"
-    og.save(conv_og_path)
-
-
+    
+    #converting paths and images to png
+    original_image_path=convert_tiff_to_png(original_image_path)
+    
     # Redirect to the /result route with image paths as URL parameters
     params = urlencode({
         'original_image_path': original_image_path,
-        'predicted_image_path': predicted_image_path,
-        'conv_og_path':conv_og_path
+        'predicted_image_path': predicted_image_path
+       
     })
     return redirect('/result?' + params)
 
@@ -130,11 +139,10 @@ def show_result():
     # Retrieve the image paths from the URL parameters
     original_image_path = request.args.get('original_image_path')
     predicted_image_path = request.args.get('predicted_image_path')
-    conv_og_path=request.args.get('conv_og_path')
     
 
     # Render the result.html template and pass the image paths
-    return render_template('result.html', actual_image_path=conv_og_path, predicted_image_path=predicted_image_path)
+    return render_template('result.html', original_image_path, predicted_image_path=predicted_image_path)
 
 
 
