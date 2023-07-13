@@ -125,7 +125,7 @@ def upload():
     
     #converting paths and images to png
     conv_original_image_path=convert_tiff_to_png(original_image_path)
-    conv_predicted_image_path=conv_original_image_path(predicted_image_path)
+    conv_predicted_image_path=convert_tiff_to_png(predicted_image_path)
     
     
     # Redirect to the /result route with image paths as URL parameters
@@ -134,18 +134,27 @@ def upload():
         'conv_predicted_image_path': conv_predicted_image_path
        
     })
-    return redirect('/result?' + params)
+
+    image_paths=[conv_original_image_path,conv_predicted_image_path]
+    return redirect(url_for('show_result',image_paths=image_paths))
 
 @app.route('/result')
 def show_result():
     # Retrieve the image paths from the URL parameters
-    conv_original_image_path = request.args.get('conv_original_image_path')
-    conv_predicted_image_path = request.args.get('conv_predicted_image_path')
+    image_paths=request.args.getlist('image_paths')
+    # conv_original_image_path = request.args.get('conv_original_image_path')
+    # conv_predicted_image_path = request.args.get('conv_predicted_image_path')
     
+    orig=image_paths[0]
+    pred=image_paths[1]
 
     # Render the result.html template and pass the image paths
-    return render_template('result.html', actual_image_path=conv_original_image_path, pred_image_path=conv_predicted_image_path)
+    # return render_template('result.html', actual_image_path=orig, pred_image_path=pred)
 
+    if image_paths:
+        return render_template('result.html', image_paths=image_paths)
+    else:
+        return 'Image paths not found in query parameters'
 
 
 
