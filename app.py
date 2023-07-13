@@ -13,11 +13,7 @@ from PIL import Image
 
 
 app = Flask(__name__)
-
-import os
-from flask import Flask
-
-app = Flask(__name__)
+app.secret_key="shinakthhainaamiska"
 
 # Set the upload folder
 app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'uploads')
@@ -99,7 +95,6 @@ def convert_to_png(tiff_path, png_path):
     image = Image.open(tiff_path)
     image.save(png_path, 'PNG')
     
-    return png_image_path
 
 @app.route('/predict', methods=['POST'])
 def upload():
