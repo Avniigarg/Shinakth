@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for,session
+from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
 import cv2
 from keras.models import load_model
@@ -89,6 +89,7 @@ def generate_unique_filename(filename):
     unique_filename = str(uuid.uuid4()) + '_' + filename
     return unique_filename
 
+# /predict route
 @app.route('/predict', methods=['POST'])
 def upload():
     file = request.files['file']
@@ -116,24 +117,28 @@ def upload():
     original_image_path_png = original_image_path.replace(".tif", ".png")
     orig_image_png.save(original_image_path_png, "PNG")
 
-    # Store image paths in session variables
-    session['image1_path'] = original_image_path_png
-    session['image2_path'] = predicted_image_path_png
+    with open('image_paths.txt', 'w'):
+        pass
+
+    # Store the image paths in a text file
+    with open('image_paths.txt', 'a') as file:
+        file.write(f"{original_image_path_png},{predicted_image_path_png}\n")
+
+    # Redirect to the result route
     return redirect(url_for('result'))
 
 
-    # Redirect to the result route with the PNG image paths
-    # return redirect(url_for('result', image1=original_image_path_png, image2=predicted_image_path_png))
-
-
-
+# /result route
 @app.route('/result')
 def result():
-    # Retrieve the image paths from the query parameters
-    # Retrieve image paths from session variables
-    image1_path = session.get('image1_path')
-    image2_path = session.get('image2_path')
-    return render_template('result.html', image1_path=image1_path, image2_path=image2_path)
+    # Retrieve the image paths from the text file
+    image_paths = []
+    with open('image_paths.txt', 'r') as file:
+        for line in file:
+            image_paths.append(line.strip().split(','))
+
+    # Pass the image paths to the template
+    return render_template('result.html', image_paths=image_paths)
 
 
 if __name__ == '__main__':
