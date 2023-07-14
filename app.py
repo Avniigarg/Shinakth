@@ -1,23 +1,20 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
-from werkzeug.utils import secure_filename
+from flask import Flask, render_template, request, redirect, url_for,session
 import numpy as np
 import cv2
-import skimage.io
 from keras.models import load_model
 from patchify import patchify, unpatchify
 from metrics import IoU, IoU_coef, IoU_loss, dice_coef, dice_coef_loss, accuracy
-from urllib.parse import urlencode
 import os
 import uuid
 from PIL import Image
 
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 app.secret_key="shinakthhainaamiska"
 
 # Set the upload folder
-app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static/uploads')
-app.config['STATIC_FOLDER'] = os.path.join(app.root_path, 'static')
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
+
 
 # Rest of your Flask app code...
 
@@ -92,11 +89,6 @@ def generate_unique_filename(filename):
     unique_filename = str(uuid.uuid4()) + '_' + filename
     return unique_filename
 
-def convert_to_png(tiff_path, png_path):
-    image = Image.open(tiff_path)
-    image.save(png_path, 'PNG')
-    
-
 @app.route('/predict', methods=['POST'])
 def upload():
     file = request.files['file']
@@ -107,47 +99,41 @@ def upload():
     predicted_filename = 'predicted_' + filename
 
     # Save the original and predicted images
-    original_image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    original_image_path = os.path.join('static/uploads', filename)
     file.save(original_image_path)
 
     predicted_image = predict(cv2.imread(original_image_path))
 
-    predicted_image_path = os.path.join(app.config['UPLOAD_FOLDER'], predicted_filename)
+    predicted_image_path = os.path.join('static/uploads', predicted_filename)
     cv2.imwrite(predicted_image_path, predicted_image)
-    
-    #converting paths and images to png
-    orig=original_image_path+".png"
-    pred=predicted_image_path+".png"
 
-    convert_to_png(original_image_path, orig)
-    convert_to_png(predicted_image_path, pred)
+    # Convert original and predicted images to PNG
+    pred_image_png = Image.open(predicted_image_path).convert("RGB")
+    predicted_image_path_png = predicted_image_path.replace(".tif", ".png")
+    pred_image_png.save(predicted_image_path_png, "PNG")
 
-    # return redirect(url_for('show_result',image_paths=image_paths))
-    image1 = "uploads/" + filename + ".png"
-    image2 = "uploads/predicted_" + filename + ".png"
+    orig_image_png = Image.open(original_image_path).convert("RGB")
+    original_image_path_png = original_image_path.replace(".tif", ".png")
+    orig_image_png.save(original_image_path_png, "PNG")
 
-    # Redirect to the /show_result route with the image paths as URL query parameters
-    return redirect('/show_result?image1=' + image1 + '&image2=' + image2)
+    # Store image paths in session variables
+    session['image1_path'] = original_image_path_png
+    session['image2_path'] = predicted_image_path_png
+    return redirect(url_for('result'))
 
-@app.route('/show_result')
-def show_result():
-    # Retrieve the image paths from the URL parameters
-    
-    image1=request.args.get('image1')
-    image2=request.args.get('image2')
 
-    # Render the result.html template and pass the image paths
-    return render_template('result.html', image1=image1, image2=image2)
+    # Redirect to the result route with the PNG image paths
+    # return redirect(url_for('result', image1=original_image_path_png, image2=predicted_image_path_png))
 
-    
+
+
 @app.route('/result')
 def result():
-    image1 = request.args.get('image1')
-    image2 = request.args.get('image2')
-    return render_template('result.html', image1=image1, image2=image2)
-
-
-
+    # Retrieve the image paths from the query parameters
+    # Retrieve image paths from session variables
+    image1_path = session.get('image1_path')
+    image2_path = session.get('image2_path')
+    return render_template('result.html', image1_path=image1_path, image2_path=image2_path)
 
 
 if __name__ == '__main__':
