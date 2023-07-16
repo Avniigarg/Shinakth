@@ -6,6 +6,7 @@ from patchify import patchify, unpatchify
 from metrics import IoU, IoU_coef, IoU_loss, dice_coef, dice_coef_loss, accuracy
 import os
 import uuid
+from flask_mail import Mail, Message
 from PIL import Image
 
 
@@ -14,6 +15,13 @@ app.secret_key="shinakthhainaamiska"
 
 # Set the upload folder
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
+
+# Set the mail server details
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'shinakthapp@gmail.com'
+app.config['MAIL_PASSWORD'] = 'resbubemsesyudev'
 
 
 # Rest of your Flask app code...
@@ -72,8 +80,27 @@ def predict(image):
 def home():
     return render_template('index.html')
 
-@app.route('/contact')
+mail = Mail(app)
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        subject = request.form['subject']
+        email = request.form['email']
+        message = request.form['message']
+        
+        # Create the email message
+        msg = Message(subject=subject,
+                      sender=app.config['MAIL_USERNAME'],
+                      recipients=['maliknajeeb113.com'])
+        msg.body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+
+        # Send the email
+       
+        mail.send(msg)
+        
+        return 'Message sent successfully!'
+        
     return render_template('contact.html')
 
 @app.route('/information')
