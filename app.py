@@ -80,9 +80,9 @@ def predict(image):
 def home():
     return render_template('index.html')
 
-mail = Mail(app)
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    
     if request.method == 'POST':
         name = request.form['name']
         subject = request.form['subject']
@@ -96,11 +96,8 @@ def contact():
         msg.body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
 
         # Send the email
-       
-        mail.send(msg)
-        
-        return 'Message sent successfully!'
-        
+        Mail(app).send(msg)
+
     return render_template('contact.html')
 
 @app.route('/information')
